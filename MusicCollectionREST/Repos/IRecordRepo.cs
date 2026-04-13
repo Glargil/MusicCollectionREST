@@ -3,6 +3,6 @@ namespace MusicCollectionREST.Repos
 {
     public interface IRecordRepo
     {
-        public IEnumerable<Record>? GetAll();
+        public IEnumerable<Record>? GetAll(string title, string artist);
     }
 }

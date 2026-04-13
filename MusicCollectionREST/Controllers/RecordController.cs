@@ -17,9 +17,12 @@ namespace MusicCollectionREST.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(
+            [FromQuery] string artist,
+            [FromQuery] string title
+            )
         {
-            IEnumerable<Record>? result = _recordRepo.GetAll();
+            IEnumerable<Record>? result = _recordRepo.GetAll(title, artist);
             if (result == null || !result.Any())
             {
                 return NoContent();

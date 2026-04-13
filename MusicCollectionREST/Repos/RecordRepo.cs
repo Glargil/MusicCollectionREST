@@ -17,9 +17,18 @@ namespace MusicCollectionREST.Repos
             //Add(new Record(0, "Thriller", "Michael Jackson", 162, 1982));
                     }
 
-        public IEnumerable<Record>? GetAll()
-        { 
-        IEnumerable<Record> result = _record;
+        public IEnumerable<Record>? GetAll(string title, string artist)
+        {
+            IEnumerable<Record> result = _record;
+
+            if (title != null)
+            {
+                result = result.Where(r => r.Title != null && r.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
+            }
+            if (artist != null)
+                {
+                    result = result.Where(r => r.Artist != null && r.Artist.Contains(artist, StringComparison.OrdinalIgnoreCase));
+            } 
             return result;
         }
 
