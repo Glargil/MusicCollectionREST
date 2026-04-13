@@ -5,6 +5,11 @@ VisualStudioVersion = 17.14.36705.20 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicCollectionREST", "MusicCollectionREST\MusicCollectionREST.csproj", "{B6FD4678-99AF-4F20-9BB2-9B82F667EB8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordTest", "RecordTest\RecordTest.csproj", "{9FBCBEF8-0118-4DA9-82B3-4DD2656C221F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B6FD4678-99AF-4F20-9BB2-9B82F667EB8C} = {B6FD4678-99AF-4F20-9BB2-9B82F667EB8C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{B6FD4678-99AF-4F20-9BB2-9B82F667EB8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6FD4678-99AF-4F20-9BB2-9B82F667EB8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6FD4678-99AF-4F20-9BB2-9B82F667EB8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBCBEF8-0118-4DA9-82B3-4DD2656C221F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBCBEF8-0118-4DA9-82B3-4DD2656C221F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBCBEF8-0118-4DA9-82B3-4DD2656C221F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBCBEF8-0118-4DA9-82B3-4DD2656C221F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
