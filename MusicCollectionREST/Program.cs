@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MusicCollectionREST.Repos;
 using System.Text;
+using MusicCollectionREST;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSwaggerGen(opt =>
