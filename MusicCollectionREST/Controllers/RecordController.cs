@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MusicCollectionREST.Repos;
 using MusicCollectionREST.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MusicCollectionREST.Controllers
 {
@@ -16,6 +17,7 @@ namespace MusicCollectionREST.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Authorize(Roles="Admin")]
         [HttpGet]
         public IActionResult GetAll(
             [FromQuery] string artist,
