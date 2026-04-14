@@ -17,9 +17,9 @@ namespace MusicCollectionREST.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
-        public IActionResult GetAll(
+        public ActionResult GetAll(
             [FromQuery] string artist,
             [FromQuery] string title
             )
@@ -31,6 +31,18 @@ namespace MusicCollectionREST.Controllers
             }
             return Ok(result);
         }
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost]
+        public ActionResult<Record> Add([FromBody] Record record)
+        {
+            Record? result = _recordRepo.Add(record);
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            return Created($"api/record/{record.Id}", record);
 
+        }
     }
 }

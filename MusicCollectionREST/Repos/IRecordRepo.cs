@@ -4,5 +4,6 @@ namespace MusicCollectionREST.Repos
     public interface IRecordRepo
     {
         public IEnumerable<Record>? GetAll(string title, string artist);
+        public Record? Add(Record record);
     }
 }
