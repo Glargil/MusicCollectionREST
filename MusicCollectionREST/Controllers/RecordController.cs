@@ -8,11 +8,11 @@ namespace MusicCollectionREST.Controllers
     [Route("api/[controller]")]
     public class RecordController : Controller
     {
-        private readonly IRecordRepo _recordRepo;
+        private readonly IRecordRepo _recordRepoDatabase;
 
         public RecordController(IRecordRepo recordRepo)
         {
-            _recordRepo = recordRepo;
+            _recordRepoDatabase = recordRepo;
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -24,7 +24,7 @@ namespace MusicCollectionREST.Controllers
             [FromQuery] string title
             )
         {
-            IEnumerable<Record>? result = _recordRepo.GetAll(title, artist);
+            IEnumerable<Record>? result = _recordRepoDatabase.GetAll(title, artist);
             if (result == null || !result.Any())
             {
                 return NoContent();
@@ -36,7 +36,7 @@ namespace MusicCollectionREST.Controllers
         [HttpPost]
         public ActionResult<Record> Add([FromBody] Record record)
         {
-            Record? result = _recordRepo.Add(record);
+            Record? result = _recordRepoDatabase.Add(record);
             if (result == null)
             {
                 return BadRequest();

@@ -4,6 +4,9 @@ using Microsoft.OpenApi.Models;
 using MusicCollectionREST.Repos;
 using System.Text;
 using MusicCollectionREST;
+using MusicCollectionREST.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSwaggerGen(opt =>
@@ -49,7 +52,13 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddSingleton<IRecordRepo, RecordRepo>();
+
+//builder.Services.AddSingleton<IRecordRepo, RecordRepo>();
+
+builder.Services.AddDbContext<RecordDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IRecordRepo, RecordRepoDatabase>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -76,6 +85,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorization();
+
 
 var app = builder.Build();
 
