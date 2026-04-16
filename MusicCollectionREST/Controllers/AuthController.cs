@@ -23,7 +23,7 @@ namespace MusicCollectionREST.Controllers
         {
             // 1. Validate the user and assign a role
             string role = "";
-            Console.WriteLine("user: " + login.Username + " - Password: " + login.Password);
+            Console.WriteLine("user: " + login.Username + " - Password: " + login.Password + login.Role);
             if (login.Username == "admin" && login.Password == "1234")
             {
                 role = "Admin";
@@ -75,6 +75,7 @@ namespace MusicCollectionREST.Controllers
     {
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
+        public string Role { get; set; } = string.Empty;
     }
 }
 
