@@ -46,7 +46,7 @@ namespace MusicCollectionREST.Controllers
             catch (Exception ex)
             {
                 // Log the exception (not implemented here)
-                return StatusCode(500, "An error occurred while processing your request." + ex);
+                return StatusCode(400, "An error occurred while processing your request." + ex);
             }
         }
 
