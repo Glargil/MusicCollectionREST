@@ -21,25 +21,33 @@ namespace MusicCollectionREST.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest login)
         {
-            // 1. Validate the user and assign a role
-            string role = "";
-            Console.WriteLine("user: " + login.Username + " - Password: " + login.Password + login.Role);
-            if (login.Username == "admin" && login.Password == "1234")
+            try
             {
-                role = "Admin";
-            }
-            else if (login.Username == "user" && login.Password == "1234")
-            {
-                role = "User";
-            }
-            else
-            {
-                return Unauthorized("Invalid username or password.");
-            }
+                // 1. Validate the user and assign a role
+                string role = "";
+                //Console.WriteLine("user: " + login.Username + " - Password: " + login.Password + login.Role);
+                if (login.Username == "admin" && login.Password == "1234")
+                {
+                    role = "Admin";
+                }
+                else if (login.Username == "user" && login.Password == "1234")
+                {
+                    role = "User";
+                }
+                else
+                {
+                    return Unauthorized("Invalid username or password.");
+                }
 
-            // Pass the role to the generator
-            var token = GenerateJwtToken(login.Username, role);
-            return Ok(new { token });
+                // Pass the role to the generator
+                var token = GenerateJwtToken(login.Username, role);
+                return Ok(new { token });
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (not implemented here)
+                return StatusCode(500, "An error occurred while processing your request." + ex);
+            }
         }
 
 
