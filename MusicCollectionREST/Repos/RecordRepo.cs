@@ -35,5 +35,28 @@ namespace MusicCollectionREST.Repos
             _record.Add(record);
             return record;
         }
+        public Record? Delete(int id)
+        {
+            Record? record = _record.Find(r => r.Id == id);
+            if (record == null)
+            {
+                return null;
+            }
+            _record.Remove(record);
+            return record;
+        }
+        public Record? Update(int id, Record record)
+        {
+            Record? existingRecord = _record.Find(r => r.Id == id);
+            if (existingRecord == null)
+            {
+                return null;
+            }
+            existingRecord.Title = record.Title;
+            existingRecord.Artist = record.Artist;
+            existingRecord.Duration = record.Duration;
+            existingRecord.PublicationYear = record.PublicationYear;
+            return existingRecord;
+        }
     }
 }

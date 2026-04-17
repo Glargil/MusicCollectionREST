@@ -68,4 +68,5 @@ namespace MusicCollectionREST.Controllers
             }
             return Ok(result);
         }
+    }
 }
