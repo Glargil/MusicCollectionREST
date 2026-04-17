@@ -44,5 +44,28 @@ namespace MusicCollectionREST.Controllers
             return Created($"api/record/{record.Id}", record);
 
         }
-    }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpDelete("{id}")]
+        public ActionResult<Record> Delete(int id)
+        {
+            Record? result = _recordRepoDatabase.Delete(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpPut("{id}")]
+        public ActionResult<Record> Update(int id, [FromBody] Record record)
+        {
+            Record? result = _recordRepoDatabase.Update(id, record);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
 }
