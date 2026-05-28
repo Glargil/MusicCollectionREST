@@ -7,7 +7,6 @@
         public string? Artist { get; set; }
         public int Duration { get; set; }
         public int PublicationYear { get; set; }
-
         public Record(string? title, string? artist, int duration, int publicationYear)
         {
             Title = title;
